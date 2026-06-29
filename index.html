@@ -26,7 +26,7 @@
     --grad:linear-gradient(120deg,#ff4d8d 0%,#ff8fb8 40%,#e8b4a0 75%,#f0c987 100%);
   }
   *{margin:0;padding:0;box-sizing:border-box}
-  html{scroll-behavior:smooth;scroll-padding-top:90px}
+  html{scroll-behavior:smooth;scroll-padding-top:90px;overflow-x:hidden}
   body{
     font-family:'Poppins',sans-serif;
     background:var(--bg);
@@ -129,6 +129,23 @@
     background-clip:text;color:transparent;display:inline-block;
     padding:0 .08em .5em .02em;line-height:1.4;overflow:visible}
 
+  /* ============ RESEARCH VISION ============ */
+  .vision-grid{display:grid;grid-template-columns:1.45fr 1fr;gap:50px;align-items:center}
+  .vision-text p{color:var(--text-dim);font-size:1.1rem;margin-bottom:20px}
+  .vision-text strong{color:var(--text);font-weight:600}
+  .vision-text .hl{background:var(--grad);-webkit-background-clip:text;background-clip:text;
+    color:transparent;font-weight:600}
+  .tracks{display:flex;flex-direction:column;gap:8px}
+  .track{background:var(--card);border:1px solid var(--card-border);border-radius:16px;
+    padding:18px 22px;display:flex;align-items:center;gap:16px;transition:transform .25s,border-color .25s}
+  .track:hover{transform:translateX(6px);border-color:var(--pink)}
+  .track-goal{background:rgba(255,77,141,.1);border-color:rgba(255,77,141,.45)}
+  .track-ico{font-size:1.7rem;flex-shrink:0}
+  .track-t{font-family:'Space Mono';font-size:.72rem;letter-spacing:1.5px;text-transform:uppercase;
+    color:var(--pink-soft);margin-bottom:4px}
+  .track-s{color:var(--text);font-size:.92rem;font-weight:500}
+  .track-link{color:var(--pink);text-align:center;font-size:1.1rem;line-height:.6;opacity:.7}
+
   /* ============ ABOUT ============ */
   .about-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:50px;align-items:start}
   .about-text p{color:var(--text-dim);font-size:1.08rem;margin-bottom:18px}
@@ -193,12 +210,12 @@
   .tl-item ul li::before{content:'•';position:absolute;left:4px;color:var(--pink);font-weight:700}
 
   /* ============ SKILLS ============ */
-  .skill-groups{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
-  .skill-card{background:var(--card);border:1px solid var(--card-border);border-radius:20px;padding:26px;
-    transition:transform .25s,border-color .25s}
-  .skill-card:hover{transform:translateY(-5px);border-color:var(--pink)}
-  .skill-card h3{font-family:'Space Mono';font-size:.78rem;letter-spacing:2px;text-transform:uppercase;
-    color:var(--pink-soft);margin-bottom:16px}
+  .skill-flow{display:flex;flex-direction:column;gap:30px}
+  .skill-row{display:grid;grid-template-columns:230px 1fr;gap:30px;align-items:baseline;
+    padding-bottom:28px;border-bottom:1px solid rgba(255,143,184,.1)}
+  .skill-row:last-child{border-bottom:none;padding-bottom:0}
+  .skill-row h3{font-family:'Space Mono';font-size:.82rem;letter-spacing:2px;text-transform:uppercase;
+    color:var(--pink-soft);line-height:1.5}
   .pills{display:flex;flex-wrap:wrap;gap:9px}
   .pill{font-size:.82rem;padding:7px 15px;border-radius:30px;background:rgba(255,255,255,.05);
     border:1px solid var(--card-border);color:var(--text-dim);transition:.2s}
@@ -224,6 +241,16 @@
   .badge-prize{display:inline-flex;align-items:center;gap:6px;font-family:'Space Mono';font-size:.7rem;
     padding:4px 10px;border-radius:20px;background:rgba(240,201,135,.15);color:var(--gold);
     border:1px solid rgba(240,201,135,.4);margin-bottom:10px;letter-spacing:1px}
+  .lead-list{list-style:none;display:flex;flex-direction:column;margin-left:26px;
+    padding-left:24px;border-left:1px solid rgba(255,143,184,.18)}
+  .lead-list li{padding:20px 0 20px 22px;border-bottom:1px solid rgba(255,143,184,.1);position:relative}
+  .lead-list li:last-child{border-bottom:none}
+  .lead-list li::before{content:'';position:absolute;left:0;top:34px;width:14px;height:1px;
+    background:var(--rose-gold);opacity:.7}
+  .ll-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:5px}
+  .ll-role{font-family:'Playfair Display',serif;font-size:1.12rem;font-weight:600;color:var(--text)}
+  .ll-org{font-family:'Space Mono';font-size:.76rem;color:var(--rose-gold);letter-spacing:.5px}
+  .lead-list p{color:var(--text-dim);font-size:.92rem}
 
   /* ============ CONTACT ============ */
   #contact{text-align:center;padding-bottom:60px}
@@ -255,8 +282,28 @@
     .nav-links a{font-size:1rem}
     .burger{display:flex;z-index:101}
     .about-grid{grid-template-columns:1fr}
+    .vision-grid{grid-template-columns:1fr}
+    .skill-row{grid-template-columns:1fr;gap:14px}
+    .exp-grid{grid-template-columns:1fr}
     .proj-head{flex-wrap:wrap;gap:12px}
     section{padding:80px 6vw}
+  }
+  @media(max-width:480px){
+    nav{padding:14px 6vw}
+    nav.shrink{padding:10px 6vw}
+    header{padding:110px 6vw 70px}
+    section{padding:64px 6vw}
+    .sec-head{margin-bottom:34px}
+    .stripe{margin:24px 0 24px -6vw}
+    .cta-row{gap:12px}
+    .btn{padding:13px 24px;font-size:.88rem}
+    .proj-head{padding:20px 20px}
+    .proj-body-inner{padding:0 20px 24px}
+    .fact{padding:15px 18px}
+    .track{padding:15px 18px}
+    .lead-list{margin-left:8px;padding-left:20px}
+    .exp-card{padding:22px}
+    .social{padding:12px 20px;font-size:.85rem}
   }
 </style>
 </head>
@@ -269,11 +316,12 @@
     <div class="logo"><span>Akki</span></div>
     <ul class="nav-links" id="navLinks">
       <li><a href="#home">Home</a></li>
-      <li><a href="#about">About</a></li>
+      <li><a href="#vision">Vision</a></li>
       <li><a href="#projects">Projects</a></li>
       <li><a href="#summer">Summer Schools</a></li>
       <li><a href="#skills">Skills</a></li>
       <li><a href="#experience">Experience</a></li>
+      <li><a href="#about">About</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
     <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
@@ -281,11 +329,11 @@
 
   <!-- HERO -->
   <header id="home">
-    <div class="eyebrow reveal"><span class="dot"></span> Computer Vision Researcher · Robotics & Autonomous Systems</div>
+    <div class="eyebrow reveal"><span class="dot"></span> Computer Vision Researcher · Robotics &amp; Autonomous Systems</div>
     <h1 class="hero-name reveal">Akanksha <span class="accent">Parija</span></h1>
     <div class="hero-akki reveal">// friends call me <b>Akki</b> 🩷</div>
-    <p class="tagline reveal">Teaching machines to see — chasing the apex where motorsport meets clean energy.</p>
-    <p class="subtag reveal">A <b>computer vision researcher</b> &amp; robotics student at Plaksha University, building perception systems from surgical AI to water intelligence — Mumbai-raised, world-travelled, and a lifelong <b>F1 fan</b>. 🏎️</p>
+    <p class="tagline reveal">Teaching machines to see — and aiming it at the things I love: motorsport &amp; clean energy.</p>
+    <p class="subtag reveal">Third-year <b>Robotics &amp; Autonomous Systems</b> student at Plaksha University, currently researching across two labs. Scroll on — I'll tell you the rest.</p>
     <div class="stripe reveal"></div>
     <div class="cta-row reveal">
       <a href="#projects" class="btn btn-primary">See my work 🏁</a>
@@ -294,25 +342,41 @@
     <div class="scroll-cue"><div class="mouse"></div>scroll</div>
   </header>
 
-  <!-- ABOUT -->
-  <section id="about">
+  <!-- RESEARCH VISION -->
+  <section id="vision">
     <div class="sec-head reveal">
-      <div class="sec-kicker">About me</div>
-      <h2 class="sec-title">The girl behind the <em>grid</em>.</h2>
+      <div class="sec-kicker">Where I'm headed</div>
+      <h2 class="sec-title">Same curiosity, different <em>tracks</em>.</h2>
     </div>
-    <div class="about-grid">
-      <div class="about-text reveal">
-        <p>Hi! I'm <strong>Akanksha</strong> — but everyone calls me <strong>Akki</strong>. I'm a third-year <strong>Robotics &amp; Autonomous Systems</strong> student at <strong>Plaksha University</strong>, and at heart, I'm <span class="hl">genuinely obsessed with computer vision</span> — teaching machines how to <em>see</em> and understand the world.</p>
-        <p>Most of my research lives in vision — from <strong>surgical action recognition</strong> and spatial attention mechanisms to foundation-model adaptation, working toward <span class="hl">Vision-Language-Action</span> systems that bridge perception and embodied robot control.</p>
-        <p>I grew up in <strong>Mumbai</strong>, have travelled all over the world, and I'm an unapologetic <strong>foodie</strong> who lives to meet new people and soak up new cultures. And then there's my biggest obsession: <strong>motorsport</strong>. 🏎️ I love F1 not just for the racing, but for the <em>whole system</em> — the engineering, the data, the split-second decisions.</p>
-        <p>Where I'm headed? The <span class="hl">intersection of motorsport and clean energy</span> — bringing perception, autonomy and sustainability onto the same track.</p>
+    <div class="vision-grid">
+      <div class="vision-text reveal">
+        <p>Whether it's a surgical video, a power grid, or a race car, the thing that pulls me in is the same: <strong>messy real-world data</strong>, and getting a machine to actually <em>understand</em> it and do something useful. <span class="hl">Computer vision</span> is how I've learned to do that — and it's the skill I've spent my time getting genuinely good at.</p>
+        <p>What I want to do with it is bring it into the two worlds I care about most: <strong>motorsport &amp; clean energy.</strong> I'm building toward that from both ends already — <strong>surgical action recognition</strong> in the MuRAL Lab and <strong>ML for battery dispatch &amp; demand-response</strong> in the Energy Lab. F1 taught me to love the <em>whole system</em> — the engineering, the data, the split-second calls — and that's exactly what I want to help build: <span class="hl">perception, autonomy &amp; sustainability, on the same track.</span></p>
       </div>
-      <div class="facts reveal">
-        <div class="fact"><span class="ico">👁️</span><div><div class="ft">Computer Vision</div><div class="fs">Primary research focus</div></div></div>
-        <div class="fact"><span class="ico">🏎️</span><div><div class="ft">F1 &amp; Motorsport</div><div class="fs">Where engineering meets data</div></div></div>
-        <div class="fact"><span class="ico">⚡</span><div><div class="ft">Clean Energy</div><div class="fs">My area of impact</div></div></div>
-        <div class="fact"><span class="ico">🌍</span><div><div class="ft">Mumbai → the world</div><div class="fs">A global perspective</div></div></div>
-        <div class="fact"><span class="ico">🤖</span><div><div class="ft">Robotics &amp; Autonomy</div><div class="fs">B.Tech · Plaksha University</div></div></div>
+      <div class="tracks reveal">
+        <div class="track">
+          <span class="track-ico">👁️</span>
+          <div class="track-body">
+            <div class="track-t">The skill</div>
+            <div class="track-s">Computer vision &amp; perception — surgical AI, attention, VLA</div>
+          </div>
+        </div>
+        <div class="track-link">↓</div>
+        <div class="track">
+          <span class="track-ico">⚡</span>
+          <div class="track-body">
+            <div class="track-t">The footing</div>
+            <div class="track-s">Clean energy — ML for microgrids &amp; demand-response</div>
+          </div>
+        </div>
+        <div class="track-link">↓</div>
+        <div class="track track-goal">
+          <span class="track-ico">🏎️</span>
+          <div class="track-body">
+            <div class="track-t">The track I'm chasing</div>
+            <div class="track-s">Autonomous motorsport &amp; sustainable mobility</div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -503,10 +567,10 @@
   <section id="skills">
     <div class="sec-head reveal">
       <div class="sec-kicker">Skills &amp; Tools</div>
-      <h2 class="sec-title">My <em>toolkit</em>.</h2>
+      <h2 class="sec-title">The tools I reach for.</h2>
     </div>
-    <div class="skill-groups">
-      <div class="skill-card reveal">
+    <div class="skill-flow">
+      <div class="skill-row reveal">
         <h3>👁️ ML &amp; Vision</h3>
         <div class="pills">
           <span class="pill">PyTorch</span><span class="pill">Multi-label Classification</span>
@@ -514,21 +578,21 @@
           <span class="pill">CAM</span><span class="pill">Transformers (ViT)</span>
         </div>
       </div>
-      <div class="skill-card reveal">
+      <div class="skill-row reveal">
         <h3>🤖 Autonomous Systems &amp; Control</h3>
         <div class="pills">
           <span class="pill">Sensor Fusion</span><span class="pill">Data-Driven Modeling</span>
           <span class="pill">Control Theory</span><span class="pill">Machine Learning</span>
         </div>
       </div>
-      <div class="skill-card reveal">
+      <div class="skill-row reveal">
         <h3>⚡ Energy Systems</h3>
         <div class="pills">
           <span class="pill">Microgrid Design</span><span class="pill">Demand-Response Modeling</span>
           <span class="pill">EV Infrastructure</span>
         </div>
       </div>
-      <div class="skill-card reveal">
+      <div class="skill-row reveal">
         <h3>💻 Engineering Tools</h3>
         <div class="pills">
           <span class="pill">Python</span><span class="pill">C++</span><span class="pill">MATLAB</span>
@@ -542,7 +606,7 @@
   <section id="experience">
     <div class="sec-head reveal">
       <div class="sec-kicker">Experience &amp; Leadership</div>
-      <h2 class="sec-title">Where I've <em>made an impact</em>.</h2>
+      <h2 class="sec-title">Labs, research &amp; showing up.</h2>
     </div>
     <div class="sub-label reveal">Research &amp; Experience</div>
     <div class="exp-grid">
@@ -567,24 +631,39 @@
     </div>
 
     <div class="sub-label gap reveal">Leadership &amp; Community</div>
-    <div class="exp-grid">
-      <div class="exp-card reveal">
-        <div class="exp-when">Leadership</div>
-        <div class="exp-role">GWIST Technical Member</div>
-        <div class="exp-org">Women Empowerment Club · Plaksha</div>
-        <p>Driving STEM inclusion on campus — championing and supporting women in science &amp; technology through the Women Empowerment Club. 💕</p>
+    <ul class="lead-list reveal">
+      <li>
+        <div class="ll-head"><span class="ll-role">GWIST · Technical Member</span><span class="ll-org">Women Empowerment Club · Plaksha</span></div>
+        <p>Driving STEM inclusion on campus — championing women in science &amp; technology. 💕</p>
+      </li>
+      <li>
+        <div class="ll-head"><span class="ll-role">Kartavya · Research Member</span><span class="ll-org">Social Service Club · Plaksha</span></div>
+        <p>Data-driven research directing community donations where they make the most impact, plus volunteering &amp; outreach.</p>
+      </li>
+      <li>
+        <div class="ll-head"><span class="ll-role">Nebula · Social Media</span><span class="ll-org">Mental Wellbeing Club · Plaksha</span></div>
+        <p>Running the club's social presence and organising small on-campus events for mental wellbeing. 💜</p>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="sec-head reveal">
+      <div class="sec-kicker">About me</div>
+      <h2 class="sec-title">The girl behind the <em>grid</em>.</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <p>Hi! I'm <strong>Akanksha</strong> — but everyone calls me <strong>Akki</strong>. I'm the person who gets <em>way</em> too animated explaining why a model looked at the wrong part of an image, and who'll happily lose a whole weekend to a problem that won't let go of me.</p>
+        <p>I grew up in <strong>Mumbai</strong>, and somewhere between a robotics class and a late-night rabbit hole I fell hard for the puzzle of getting machines to make sense of the world — it's been my favourite kind of problem ever since.</p>
+        <p>Away from the screen, I'm an unapologetic <strong>foodie</strong> and relentless traveller, a <strong>rom-com</strong> lover, and a die-hard <strong>F1</strong> fan with strong opinions about strategy calls. My music taste has zero genre loyalty, and I'll happily lose hours watching <strong>figure skating</strong>, <strong>rhythmic gymnastics</strong>, <strong>tennis</strong>, or <strong>basketball</strong>.</p>
       </div>
-      <div class="exp-card reveal">
-        <div class="exp-when">Leadership</div>
-        <div class="exp-role">Kartavya Research Member</div>
-        <div class="exp-org">Social Service Club · Plaksha</div>
-        <p>Data-driven research directing community donations where they make the most impact — plus volunteering and helping organise activities and outreach.</p>
-      </div>
-      <div class="exp-card reveal">
-        <div class="exp-when">Leadership</div>
-        <div class="exp-role">Social Media Member</div>
-        <div class="exp-org">Nebula · Mental Wellbeing Club · Plaksha</div>
-        <p>Managing the club's social media presence and helping organise small on-campus events that support mental wellbeing across the community. 💜</p>
+      <div class="facts reveal">
+        <div class="fact"><span class="ico">🤖</span><div><div class="ft">B.Tech · Robotics &amp; Autonomy</div><div class="fs">Plaksha University · 3rd year</div></div></div>
+        <div class="fact"><span class="ico">🏎️</span><div><div class="ft">Lifelong F1 fan</div><div class="fs">In love with the whole system</div></div></div>
+        <div class="fact"><span class="ico">🌍</span><div><div class="ft">Mumbai → the world</div><div class="fs">Always chasing a new place</div></div></div>
+        <div class="fact"><span class="ico">🍿</span><div><div class="ft">Rom-coms &amp; courtside</div><div class="fs">Comfort watches &amp; precision sports</div></div></div>
       </div>
     </div>
   </section>
