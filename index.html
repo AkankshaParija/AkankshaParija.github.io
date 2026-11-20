@@ -51,6 +51,11 @@
 
   /* hero */
   header{padding:72px 0 40px}
+  .hero{display:grid;grid-template-columns:1fr 200px;gap:40px;align-items:start}
+  .portrait{width:200px;height:200px;border-radius:50%;object-fit:cover;border:1px solid var(--line);margin-top:8px}
+  figure{margin-top:18px}
+  figure img{width:100%;height:auto;border-radius:10px;border:1px solid var(--line);display:block}
+  figcaption{font-size:.84rem;color:var(--muted);margin-top:8px;line-height:1.5}
   .kicker{font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:14px}
   h1{font-family:var(--serif);font-size:clamp(2.4rem,6vw,3.4rem);line-height:1.08;font-weight:700;letter-spacing:-.01em}
   .role{margin-top:10px;color:var(--text-2);font-size:1.05rem}
@@ -124,6 +129,8 @@
     .links li:last-child{border:0}
     .menu{display:inline-block}
     header{padding:44px 0 30px}
+    .hero{grid-template-columns:1fr;gap:0}
+    .portrait{width:120px;height:120px;order:-1;margin:0 0 22px}
     .grid,.skills{grid-template-columns:1fr}
     .tl li{grid-template-columns:1fr;gap:2px}
     .news li{grid-template-columns:1fr;gap:0}
@@ -151,7 +158,8 @@
 </nav>
 
 <main class="wrap" id="top">
-  <header>
+  <header class="hero">
+   <div>
     <div class="kicker">Computer vision for surgery</div>
     <h1>Akanksha Parija</h1>
     <div class="role">Undergraduate researcher · BTech Robotics &amp; Autonomous Systems, Plaksha University (2024–2028)</div>
@@ -173,6 +181,8 @@
       <a class="btn" href="https://www.linkedin.com/in/akanksha-parija-b40231291">
         <svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.5h4V21H3zm7 0h3.8v1.6h.1c.5-1 1.8-2 3.8-2 4 0 4.8 2.6 4.8 6V21h-4v-5.2c0-1.3 0-2.9-1.8-2.9s-2 1.4-2 2.8V21h-4z"/></svg>LinkedIn</a>
     </div>
+   </div>
+   <img class="portrait" src="assets/akanksha.jpg" alt="Photo of Akanksha Parija" width="200" height="200" />
   </header>
 
   <section id="news" aria-labelledby="news-h">
@@ -211,6 +221,10 @@
           </table>
         </div>
         <div class="caption">Official CAMMA evaluation protocol (ivtmetrics), CholecT45 cross-validation splits.</div>
+        <figure>
+          <img src="assets/cam-vs-gaussian.jpg" alt="Three panels of a laparoscopic frame with scissors: the original image, RiT's weakly supervised CAM spreading over the tool and surrounding tissue, and the box-derived Gaussian heatmap confined to the scissors" width="1250" height="269" loading="lazy" />
+          <figcaption>VID02, frame 51 (scissors). Left: input. Middle: RiT's weakly supervised CAM spreads over the instrument and the tissue around it. Right: the box-derived Gaussian prior stays on the instrument, which is exactly where the target context is lost. Frame from CholecT45 (CAMMA), CC BY-NC-SA 4.0.</figcaption>
+        </figure>
         <div class="finding"><strong>Finding.</strong> I expected the cleaner localisation to help. It didn't: tool recognition stayed level, but target and triplet AP fell by 7–9 points. The diffuse CAMs spill onto the tissue around each instrument, and the target head appears to rely on that context. Tight instrument priors remove it. I am now testing a dual-scale prior: tight around the instrument, wider around the likely target region.</div>
         <div class="tags"><span>PyTorch</span><span>Surgical video</span><span>Spatial attention</span><span>Weak supervision</span><span>Reproducibility</span></div>
         <p style="font-size:.9rem">Full benchmark report available on request.</p>
